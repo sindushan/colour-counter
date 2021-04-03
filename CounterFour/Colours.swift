@@ -38,22 +38,25 @@ enum Colours {
 //        case .eighth:
 //            return "MT"
 //        }
+        /* Object
+        {"Illuminating Emerald":"479473","Jungle Green":"4ea37e","Pistachio":"92c580","Key Lime":"d6e681","Maize Crayola":"e1c055","Goldenrod":"e7ad3f","Carrot Orange":"ec9a29","Flame":"da5c27"}
+         */
         case .first:
-            return "French Lilac"
+            return "Emerald"
         case .second:
-            return "Green"
+            return "Jungle"
         case .third:
-            return "Middle Red"
+            return "Pistachio"
         case .fourth:
-            return "Sky Blue"
+            return "Lime"
         case .fifth:
-            return "Malachite"
+            return "Maize"
         case .sixth:
-            return "Key Lime"
+            return "Goldenrod"
         case .seventh:
             return "Carrot"
         case .eighth:
-            return "Lava"
+            return "Flame"
         }
     }
     
@@ -89,7 +92,4 @@ extension Color {
     static var listNameColour: Color { return Color(red: 0.82, green: 0.67, blue: 0.85) }
     static var listTimeColor: Color { return Color(red: 0.53, green: 0.80, blue: 0.95) }
   }
-    /* Object
-    {"Illuminating Emerald":"479473","Jungle Green":"4ea37e","Pistachio":"92c580","Key Lime":"d6e681","Maize Crayola":"e1c055","Goldenrod":"e7ad3f","Carrot Orange":"ec9a29","Flame":"da5c27"}
-     */
 }
