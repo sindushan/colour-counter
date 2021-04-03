@@ -217,7 +217,7 @@ struct ButtonView: View {
                 {
                     Button(action: addFirstItem, label: {
                     Text("\(Colours.first.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.firstColor))
                     Spacer()
                 }
                 HStack{
@@ -230,7 +230,7 @@ struct ButtonView: View {
                     {
                         Button(action: addSecondItem, label: {
                             Text("\(Colours.second.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.secondColor))
                         Spacer()
                     }
                 }
@@ -247,7 +247,7 @@ struct ButtonView: View {
                 HStack{
                     Button(action: addThirdItem, label: {
                         Text("\(Colours.third.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.thirdColor))
                     Spacer()
                 }
                 HStack{
@@ -259,7 +259,7 @@ struct ButtonView: View {
                     HStack{
                         Button(action: addFourthItem, label: {
                         Text("\(Colours.fourth.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.fourthColor))
                         Spacer()
                     }
                 }
@@ -274,7 +274,7 @@ struct ButtonView: View {
                 HStack{
                     Button(action: addFifthItem, label: {
                     Text("\(Colours.fifth.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.fifthColor))
                     Spacer()
                 }
                 HStack{
@@ -286,7 +286,7 @@ struct ButtonView: View {
                     HStack{
                         Button(action: addSixthItem, label: {
                         Text("\(Colours.sixth.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.sixthColor))
                         Spacer()
                     }
                 }
@@ -301,7 +301,7 @@ struct ButtonView: View {
                 HStack{
                     Button(action: addSeventhItem, label: {
                     Text("\(Colours.seventh.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.seventhColor))
                     Spacer()
                 }
                 HStack{
@@ -313,7 +313,7 @@ struct ButtonView: View {
                     HStack{
                         Button(action: addEigthItem, label: {
                         Text("\(Colours.eighth.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: .blue))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.eighthColor))
                         Spacer()
                     }
                 }
