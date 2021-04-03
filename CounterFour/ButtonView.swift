@@ -188,11 +188,11 @@ struct ButtonView: View {
                 HStack{
                     Button(action: setTime, label: {
                     Text("\(item.colour!)").font(.headline)
-                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: Color(red: 153/255, green: 181/255, blue: 181/255)))
+                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: Color.SecondTheme.listNameColour))
                     Spacer()
                     Button(action: setTime, label: {
                     Text("\(item.timestamp!, formatter: itemFormatter)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color(red: 102/255, green: 102/255, blue: 242/255)))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.listTimeColor))
                 }
             }
             .onDelete(perform: deleteItems)}
@@ -211,26 +211,26 @@ struct ButtonView: View {
                 Spacer()
                 Button(action: addFirstItem, label: {
                     Text("\(getFirstEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.eighthColor))
                 Spacer()
                 HStack
                 {
                     Button(action: addFirstItem, label: {
                     Text("\(Colours.first.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.firstColor))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.firstColor))
                     Spacer()
                 }
                 HStack{
                     Spacer()
                     Button(action: addSecondItem, label: {
                         Text("\(getSecondEntryCount())").font(.headline)
-                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.seventhColor))
                     
                     HStack
                     {
                         Button(action: addSecondItem, label: {
                             Text("\(Colours.second.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.secondColor))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.secondColor))
                         Spacer()
                     }
                 }
@@ -242,24 +242,24 @@ struct ButtonView: View {
                 Spacer()
                 Button(action: addThirdItem, label: {
                     Text("\(getThirdEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.sixthColor))
                 Spacer()
                 HStack{
                     Button(action: addThirdItem, label: {
                         Text("\(Colours.third.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.thirdColor))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.thirdColor))
                     Spacer()
                 }
                 HStack{
                     Spacer()
                     Button(action: addFourthItem, label: {
                     Text("\(getFourthEntryCount())").font(.headline)
-                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fifthColor))
                     Spacer()
                     HStack{
                         Button(action: addFourthItem, label: {
                         Text("\(Colours.fourth.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.fourthColor))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fourthColor))
                         Spacer()
                     }
                 }
@@ -269,24 +269,24 @@ struct ButtonView: View {
                 Spacer()
                 Button(action: addFifthItem, label: {
                 Text("\(getFifthEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fourthColor))
                 Spacer()
                 HStack{
                     Button(action: addFifthItem, label: {
                     Text("\(Colours.fifth.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.fifthColor))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fifthColor))
                     Spacer()
                 }
                 HStack{
                     Spacer()
                     Button(action: addSixthItem, label: {
                     Text("\(getSixthEntryCount())").font(.headline)
-                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.thirdColor))
                     Spacer()
                     HStack{
                         Button(action: addSixthItem, label: {
                         Text("\(Colours.sixth.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.sixthColor))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.sixthColor))
                         Spacer()
                     }
                 }
@@ -296,24 +296,24 @@ struct ButtonView: View {
                 Spacer()
                 Button(action: addSeventhItem, label: {
                 Text("\(getSeventhEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.secondColor))
                 Spacer()
                 HStack{
                     Button(action: addSeventhItem, label: {
                     Text("\(Colours.seventh.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.seventhColor))
+                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.seventhColor))
                     Spacer()
                 }
                 HStack{
                     Spacer()
                     Button(action: addEigthItem, label: {
                     Text("\(getEighthEntryCount())").font(.headline)
-                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: .purple))
+                    }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.firstColor))
                     Spacer()
                     HStack{
                         Button(action: addEigthItem, label: {
                         Text("\(Colours.eighth.label)").font(.headline)
-                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.FirstTheme.eighthColor))
+                        }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.eighthColor))
                         Spacer()
                     }
                 }
