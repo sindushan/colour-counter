@@ -52,7 +52,7 @@ enum Colours {
         case .fifth:
             return "Maize"
         case .sixth:
-            return "Goldenrod"
+            return "Golrod"
         case .seventh:
             return "Carrot"
         case .eighth:
