@@ -96,7 +96,7 @@ extension Color {
 
 extension Color {
   struct SecondTheme {
-    //["05827d","058f8a","059d98","06ada7","07beb8","3dccc7","68d8d6","9ceaef"]
+    //["05827d","058f8a","059d98","06ada7","07beb8","3dccc7","68d8d6","9ceaef","3a5972","5E7CE2"]
     static var firstColor: Color  { return Color(red: 0.0196, green: 0.5098, blue: 0.4902) }
     static var secondColor: Color { return Color(red: 0.0196, green: 0.5608, blue: 0.5412) }
     static var thirdColor: Color  { return Color(red: 0.0196, green: 0.6157, blue: 0.5961) }
@@ -105,7 +105,7 @@ extension Color {
     static var sixthColor: Color { return Color(red: 0.2392, green: 0.8, blue: 0.7804) }
     static var seventhColor: Color  { return Color(red: 0.4078, green: 0.8471, blue: 0.8392) }
     static var eighthColor: Color { return Color(red: 0.6118, green: 0.9176, blue: 0.9373) }
-    static var listNameColour: Color { return Color(red: 0.0392, green: 0.2118, blue: 0.6157) }
+    static var listNameColour: Color { return Color(red: 0.2275, green: 0.349, blue: 0.4471) }
     static var listTimeColor: Color { return Color(red: 0.3686, green: 0.4863, blue: 0.8863) }
   }
 }
