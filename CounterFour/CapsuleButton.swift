@@ -18,19 +18,20 @@ struct RoundedRectangleButton: ButtonStyle {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
 //                    Capsule()
-                        .shadow(color: .white, radius: configuration.isPressed ? 7: 10, x: configuration.isPressed ? -5: -15, y: configuration.isPressed ? -5: -15)
+                        .shadow(color: .white, radius: configuration.isPressed ? 7 : 10, x: configuration.isPressed ? -5 : -15, y: configuration.isPressed ? -5 : -15)
 //                        .shadow(color: .white, radius: configuration.isPressed ? 7: 10, x: configuration.isPressed ? 5: 15, y: configuration.isPressed ? 5: 15)
                         .blendMode(.overlay)
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
 //                    Capsule()
                         .fill(bgColor)
                 }
-        )
-            .scaleEffect(configuration.isPressed ? 0.85: 1)
+            )
+            .scaleEffect(configuration.isPressed ? 0.85 : 1)
             .foregroundColor(.white)
             .animation(.spring())
     }
 }
+
 struct CapsuleButton: ButtonStyle {
     var bgColor: Color
 
@@ -40,19 +41,20 @@ struct CapsuleButton: ButtonStyle {
             .background(
                 ZStack {
                     Capsule()
-                        .shadow(color: .white, radius: configuration.isPressed ? 7: 10, x: configuration.isPressed ? -5: -15, y: configuration.isPressed ? -5: -15)
-                        .shadow(color: .white, radius: configuration.isPressed ? 7: 10, x: configuration.isPressed ? 5: 15, y: configuration.isPressed ? 5: 15)
+                        .shadow(color: .white, radius: configuration.isPressed ? 7 : 10, x: configuration.isPressed ? -5 : -15, y: configuration.isPressed ? -5 : -15)
+                        .shadow(color: .white, radius: configuration.isPressed ? 7 : 10, x: configuration.isPressed ? 5 : 15, y: configuration.isPressed ? 5 : 15)
                         .blendMode(.overlay)
-                    
+
                     Capsule()
                         .fill(bgColor)
                 }
-        )
-            .scaleEffect(configuration.isPressed ? 0.85: 1)
+            )
+            .scaleEffect(configuration.isPressed ? 0.85 : 1)
             .foregroundColor(.white)
             .animation(.spring())
     }
 }
+
 struct BlackCapsuleButton: ButtonStyle {
     var bgColor: Color
 
@@ -64,12 +66,13 @@ struct BlackCapsuleButton: ButtonStyle {
                     Capsule()
                         .fill(bgColor)
                 }
-        )
-            .scaleEffect(configuration.isPressed ? 0.85: 1)
+            )
+            .scaleEffect(configuration.isPressed ? 0.85 : 1)
             .foregroundColor(.white)
             .animation(.spring())
     }
 }
+
 struct EllipseButton: ButtonStyle {
     var bgColor: Color
 
@@ -79,15 +82,15 @@ struct EllipseButton: ButtonStyle {
             .background(
                 ZStack {
                     Circle()
-                        .shadow(color: .white, radius: configuration.isPressed ? 7: 10, x: configuration.isPressed ? -5: -15, y: configuration.isPressed ? -5: -15)
-                        .shadow(color: .black, radius: configuration.isPressed ? 7: 10, x: configuration.isPressed ? 5: 15, y: configuration.isPressed ? 5: 15)
+                        .shadow(color: .white, radius: configuration.isPressed ? 7 : 10, x: configuration.isPressed ? -5 : -15, y: configuration.isPressed ? -5 : -15)
+                        .shadow(color: .black, radius: configuration.isPressed ? 7 : 10, x: configuration.isPressed ? 5 : 15, y: configuration.isPressed ? 5 : 15)
                         .blendMode(.overlay)
-                    
+
                     Circle()
                         .fill(bgColor)
                 }
-        )
-            .scaleEffect(configuration.isPressed ? 0.85: 1)
+            )
+            .scaleEffect(configuration.isPressed ? 0.85 : 1)
             .foregroundColor(.white)
             .animation(.spring())
     }
@@ -104,6 +107,7 @@ struct FilledButton: ButtonStyle {
             .cornerRadius(8)
     }
 }
+
 struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ProgressView(configuration)

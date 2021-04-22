@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SideMenu
 import SwiftUI
+
 struct ButtonView: View {
     @State var firstCount = 0
     @State var secondCount = 0
@@ -23,20 +25,21 @@ struct ButtonView: View {
     @State private var birthDate = Date()
     var body: some View {
         List {
-            if(isItEmpty){ForEach(items) { item in
-                HStack{
+            if isItEmpty { ForEach(items) { item in
+                HStack {
                     Button(action: setTime, label: {
-                    Text("\(item.colour!)").font(.headline)
+                        Text("\(item.colour!)").font(.headline)
                     }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: Color.SecondTheme.listNameColour))
                     Spacer()
                     Button(action: setTime, label: {
-                    Text("\(item.timestamp!, formatter: itemFormatter)").font(.headline)
+                        Text("\(item.timestamp!, formatter: itemFormatter)").font(.headline)
                     }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: Color.SecondTheme.listTimeColor))
                 }
             }
-            .onDelete(perform: deleteItems)}
+            .onDelete(perform: deleteItems)
+            }
         }
-        HStack{
+        HStack {
             Spacer()
             Spacer()
             DatePicker(selection: $birthDate, in: ...Date().addingTimeInterval(86400), displayedComponents: [.date, .hourAndMinute]) {
@@ -44,30 +47,26 @@ struct ButtonView: View {
             }
         }
         VStack(alignment: .trailing, spacing: 15, content: {
-            
-            
-            HStack{
+            HStack {
                 Spacer()
                 Button(action: addFirstItem, label: {
                     Text("\(getFirstEntryCount())").font(.headline)
                 }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.firstColor))
-                
-                HStack
-                {
+
+                HStack {
                     Spacer()
                     Button(action: addFirstItem, label: {
-                    Text("\(Colours.first.label)").font(.headline)
+                        Text("\(Colours.first.label)").font(.headline)
                     }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.firstColor))
                     Spacer()
                 }
-                HStack{
+                HStack {
                     Spacer()
                     Button(action: addSecondItem, label: {
                         Text("\(getSecondEntryCount())").font(.headline)
                     }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.secondColor))
-                    
-                    HStack
-                    {
+
+                    HStack {
                         Spacer()
                         Button(action: addSecondItem, label: {
                             Text("\(Colours.second.label)").font(.headline)
@@ -75,137 +74,145 @@ struct ButtonView: View {
 //                        Spacer()
                     }
                 }
-                
             }
-            
 
-            HStack{
+            HStack {
                 Spacer()
                 Button(action: addThirdItem, label: {
                     Text("\(getThirdEntryCount())").font(.headline)
                 }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.thirdColor))
-                
-                HStack{
+
+                HStack {
                     Spacer()
                     Button(action: addThirdItem, label: {
                         Text("\(Colours.third.label)").font(.headline)
                     }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.thirdColor))
                     Spacer()
                 }
-                HStack{
+                HStack {
                     Spacer()
                     Button(action: addFourthItem, label: {
-                    Text("\(getFourthEntryCount())").font(.headline)
+                        Text("\(getFourthEntryCount())").font(.headline)
                     }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fourthColor))
-                    
-                    HStack{
+
+                    HStack {
                         Spacer()
                         Button(action: addFourthItem, label: {
-                        Text("\(Colours.fourth.label)").font(.headline)
+                            Text("\(Colours.fourth.label)").font(.headline)
                         }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fourthColor))
 //                        Spacer()
                     }
                 }
             }
-            
-            HStack{
+
+            HStack {
                 Spacer()
                 Button(action: addFifthItem, label: {
-                Text("\(getFifthEntryCount())").font(.headline)
+                    Text("\(getFifthEntryCount())").font(.headline)
                 }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fifthColor))
-                
-                HStack{
+
+                HStack {
                     Spacer()
                     Button(action: addFifthItem, label: {
-                    Text("\(Colours.fifth.label)").font(.headline)
+                        Text("\(Colours.fifth.label)").font(.headline)
                     }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fifthColor))
                     Spacer()
                 }
-                HStack{
+                HStack {
                     Spacer()
                     Button(action: addSixthItem, label: {
-                    Text("\(getSixthEntryCount())").font(.headline)
+                        Text("\(getSixthEntryCount())").font(.headline)
                     }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.sixthColor))
-                    
-                    HStack{
+
+                    HStack {
                         Spacer()
                         Button(action: addSixthItem, label: {
-                        Text("\(Colours.sixth.label)").font(.headline)
+                            Text("\(Colours.sixth.label)").font(.headline)
                         }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.sixthColor))
 //                        Spacer()
                     }
                 }
             }
-            
-            HStack{
+
+            HStack {
                 Spacer()
                 Button(action: addSeventhItem, label: {
-                Text("\(getSeventhEntryCount())").font(.headline)
+                    Text("\(getSeventhEntryCount())").font(.headline)
                 }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.seventhColor))
-                
-                HStack{
+
+                HStack {
                     Spacer()
                     Button(action: addSeventhItem, label: {
-                    Text("\(Colours.seventh.label)").font(.headline)
+                        Text("\(Colours.seventh.label)").font(.headline)
                     }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.seventhColor))
                     Spacer()
                 }
-                HStack{
+                HStack {
                     Spacer()
                     Button(action: addEigthItem, label: {
-                    Text("\(getEighthEntryCount())").font(.headline)
+                        Text("\(getEighthEntryCount())").font(.headline)
                     }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.eighthColor))
-                    
-                    HStack{
+
+                    HStack {
                         Spacer()
                         Button(action: addEigthItem, label: {
-                        Text("\(Colours.eighth.label)").font(.headline)
+                            Text("\(Colours.eighth.label)").font(.headline)
                         }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.eighthColor))
 //                        Spacer()
                     }
                 }
             }
-            
-            })
+
+        })
     }
+
     func firstIncrement() {
-        firstCount+=1
-        time=getDate()
+        firstCount += 1
+        time = getDate()
     }
-    func secondIncrement(){
-        secondCount+=1
-        time=getDate()
+
+    func secondIncrement() {
+        secondCount += 1
+        time = getDate()
     }
-    func thirdIncrement(){
-        thirdCount+=1
-        time=getDate()
+
+    func thirdIncrement() {
+        thirdCount += 1
+        time = getDate()
     }
-    func fourthIncrement(){
-        fourthCount+=1
-        time=getDate()
+
+    func fourthIncrement() {
+        fourthCount += 1
+        time = getDate()
     }
-    func fifthIncrement(){
-        fifthCount+=1
-        time=getDate()
+
+    func fifthIncrement() {
+        fifthCount += 1
+        time = getDate()
     }
-    func sixthIncrement(){
-        sixthCount+=1
-        time=getDate()
+
+    func sixthIncrement() {
+        sixthCount += 1
+        time = getDate()
     }
-    func seventhIncrement(){
-        seventhCount+=1
-        time=getDate()
+
+    func seventhIncrement() {
+        seventhCount += 1
+        time = getDate()
     }
-    func eigthIncrement(){
-        eighthCount+=1
-        time=getDate()
+
+    func eigthIncrement() {
+        eighthCount += 1
+        time = getDate()
     }
-    func getDate() -> String{
+
+    func getDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E MMM d h:mm a"
         return
             dateFormatter.string(from: Date())
     }
+
     func addItem(colour: Colours) {
         withAnimation {
             let newItem = Item(context: viewContext)
@@ -219,38 +226,47 @@ struct ButtonView: View {
             }
         }
     }
-    func addFirstItem(){
+
+    func addFirstItem() {
         addItem(colour: .first)
         firstIncrement()
     }
-    func addSecondItem(){
+
+    func addSecondItem() {
         addItem(colour: .second)
         secondIncrement()
     }
-    func addThirdItem(){
+
+    func addThirdItem() {
         addItem(colour: .third)
         thirdIncrement()
     }
-    func addFourthItem(){
+
+    func addFourthItem() {
         addItem(colour: .fourth)
         fourthIncrement()
     }
-    func addFifthItem(){
+
+    func addFifthItem() {
         addItem(colour: .fifth)
         fifthIncrement()
     }
-    func addSixthItem(){
+
+    func addSixthItem() {
         addItem(colour: .sixth)
         sixthIncrement()
     }
-    func addSeventhItem(){
+
+    func addSeventhItem() {
         addItem(colour: .seventh)
         seventhIncrement()
     }
-    func addEigthItem(){
+
+    func addEigthItem() {
         addItem(colour: .eighth)
         eigthIncrement()
     }
+
     func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
@@ -262,57 +278,69 @@ struct ButtonView: View {
             }
         }
     }
+
     private let itemFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .medium
         return formatter
     }()
-    private func getFirstEntryCount() -> Int{
+
+    private func getFirstEntryCount() -> Int {
         return getEntryCountFor(.first)
     }
-    private func getSecondEntryCount() -> Int{
+
+    private func getSecondEntryCount() -> Int {
         return getEntryCountFor(.second)
     }
-    private func getThirdEntryCount() -> Int{
+
+    private func getThirdEntryCount() -> Int {
         return getEntryCountFor(.third)
     }
-    private func getFourthEntryCount() -> Int{
+
+    private func getFourthEntryCount() -> Int {
         return getEntryCountFor(.fourth)
     }
-    private func getFifthEntryCount() -> Int{
+
+    private func getFifthEntryCount() -> Int {
         return getEntryCountFor(.fifth)
     }
-    private func getSixthEntryCount() -> Int{
+
+    private func getSixthEntryCount() -> Int {
         return getEntryCountFor(.sixth)
     }
-    private func getSeventhEntryCount() -> Int{
+
+    private func getSeventhEntryCount() -> Int {
         return getEntryCountFor(.seventh)
     }
-    private func getEighthEntryCount() -> Int{
+
+    private func getEighthEntryCount() -> Int {
         return getEntryCountFor(.eighth)
     }
-    private func setTime(){
-        time = itemFormatter.string(from: items[items.endIndex-1].timestamp ?? Date())
+
+    private func setTime() {
+        time = itemFormatter.string(from: items[items.endIndex - 1].timestamp ?? Date())
     }
+
     func timeDiff(colour: Colours) -> Int {
-        let firstIndex = items.firstIndex(where: { $0.colour == colour.label}) ?? 0
-        let lastIndex = items.lastIndex(where: { $0.colour == colour.label}) ?? 0
-        if(firstIndex != lastIndex)
-        {
+        let firstIndex = items.firstIndex(where: { $0.colour == colour.label }) ?? 0
+        let lastIndex = items.lastIndex(where: { $0.colour == colour.label }) ?? 0
+        if firstIndex != lastIndex {
             let diffComponents = Calendar.current.dateComponents([.hour], from: items[lastIndex].timestamp!, to: items[firstIndex].timestamp!)
             let days = diffComponents.hour! / 24
             return days
         }
         return 0
     }
-    func getItemsArray() -> [String]{
-        let arrayColours = items.map({ item in
+
+    func getItemsArray() -> [String] {
+        let arrayColours = items.map { item in
             item.colour!
-        })
+        }
         return arrayColours
     }
-    private func getEntryCountFor(_ colour: Colours) -> Int{
+
+    private func getEntryCountFor(_ colour: Colours) -> Int {
         let array = getItemsArray()
         let dictionary = array.reduce(into: [:]) { counts, colour in
             counts[colour, default: 0] += 1
@@ -324,9 +352,8 @@ struct ButtonView: View {
     }
 }
 
-
-//struct ContentView_Previews: PreviewProvider {
+// struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ButtonView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 //    }
-//}
+// }
