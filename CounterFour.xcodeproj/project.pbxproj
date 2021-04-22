@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A872BA0C2627A43A00BF39C9 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A872BA0B2627A43A00BF39C9 /* CapsuleButton.swift */; };
-		A8BE7ABA263223D700852182 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = A8BE7AB9263223D700852182 /* SideMenu */; };
 		A8F9BFF025FEB5F3008DF7E5 /* CounterFourApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F9BFEF25FEB5F3008DF7E5 /* CounterFourApp.swift */; };
 		A8F9BFF225FEB5F3008DF7E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F9BFF125FEB5F3008DF7E5 /* ContentView.swift */; };
 		A8F9BFF425FEB5F6008DF7E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F9BFF325FEB5F6008DF7E5 /* Assets.xcassets */; };
@@ -65,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8BE7ABA263223D700852182 /* SideMenu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +165,6 @@
 			);
 			name = CounterFour;
 			packageProductDependencies = (
-				A8BE7AB9263223D700852182 /* SideMenu */,
 			);
 			productName = CounterFour;
 			productReference = A8F9BFEC25FEB5F3008DF7E5 /* CounterFour.app */;
@@ -241,7 +238,6 @@
 			);
 			mainGroup = A8F9BFE325FEB5F3008DF7E5;
 			packageReferences = (
-				A8BE7AB8263223D700852182 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = A8F9BFED25FEB5F3008DF7E5 /* Products */;
 			projectDirPath = "";
@@ -612,25 +608,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A8BE7AB8263223D700852182 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Vidhyadharan-Mohanram/SideMenu";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A8BE7AB9263223D700852182 /* SideMenu */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A8BE7AB8263223D700852182 /* XCRemoteSwiftPackageReference "SideMenu" */;
-			productName = SideMenu;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A8F9BFFA25FEB5F6008DF7E5 /* CounterFour.xcdatamodeld */ = {
