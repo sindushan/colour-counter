@@ -34,54 +34,8 @@ struct ButtonView: View {
             thirdRow
         })
     }
-
-    func firstIncrement() {
-        firstCount += 1
-        time = getDate()
-    }
-
-    func secondIncrement() {
-        secondCount += 1
-        time = getDate()
-    }
-
-    func thirdIncrement() {
-        thirdCount += 1
-        time = getDate()
-    }
-
-    func fourthIncrement() {
-        fourthCount += 1
-        time = getDate()
-    }
-
-    func fifthIncrement() {
-        fifthCount += 1
-        time = getDate()
-    }
-
-    func sixthIncrement() {
-        sixthCount += 1
-        time = getDate()
-    }
-
-    func seventhIncrement() {
-        seventhCount += 1
-        time = getDate()
-    }
-
-    func eigthIncrement() {
-        eighthCount += 1
-        time = getDate()
-    }
-
-    func ninthIncrement() {
-        ninthCount += 1
-        time = getDate()
-    }
     
     func getItems() {
-//        itemslist = String(items)
         let times = items.map { item in
             item.timestamp
         }
@@ -91,166 +45,7 @@ struct ButtonView: View {
         times.forEach { (time) in
             stringDate = stringDate + formatter4.string(from: time!)
         }
-//        let timeandDate = [String:String].self
-//        var counter = 0
-//        times.forEach { item in
-//            timeandDate[item] = items
-//            counter = counter + 1
-//        }
         itemslist = stringDate
-    }
-    func getDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E MMM d h:mm a"
-        return
-            dateFormatter.string(from: Date())
-    }
-
-    func addItem(colour: Colours) {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = birthDate
-            newItem.colour = colour.label
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    func addFirstItem() {
-        addItem(colour: .first)
-        firstIncrement()
-    }
-
-    func addSecondItem() {
-        addItem(colour: .second)
-        secondIncrement()
-    }
-
-    func addThirdItem() {
-        addItem(colour: .third)
-        thirdIncrement()
-    }
-
-    func addFourthItem() {
-        addItem(colour: .fourth)
-        fourthIncrement()
-    }
-
-    func addFifthItem() {
-        addItem(colour: .fifth)
-        fifthIncrement()
-    }
-
-    func addSixthItem() {
-        addItem(colour: .sixth)
-        sixthIncrement()
-    }
-
-    func addSeventhItem() {
-        addItem(colour: .seventh)
-        seventhIncrement()
-    }
-
-    func addEigthItem() {
-        addItem(colour: .eighth)
-        eigthIncrement()
-    }
-
-    func addNinthItem() {
-        addItem(colour: .ninth)
-        ninthIncrement()
-    }
-
-    func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private let itemFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .short
-        return formatter
-    }()
-
-    private func getFirstEntryCount() -> Int {
-        return getEntryCountFor(.first)
-    }
-
-    private func getSecondEntryCount() -> Int {
-        return getEntryCountFor(.second)
-    }
-
-    private func getThirdEntryCount() -> Int {
-        return getEntryCountFor(.third)
-    }
-
-    private func getFourthEntryCount() -> Int {
-        return getEntryCountFor(.fourth)
-    }
-
-    private func getFifthEntryCount() -> Int {
-        return getEntryCountFor(.fifth)
-    }
-
-    private func getSixthEntryCount() -> Int {
-        return getEntryCountFor(.sixth)
-    }
-
-    private func getSeventhEntryCount() -> Int {
-        return getEntryCountFor(.seventh)
-    }
-
-    private func getEighthEntryCount() -> Int {
-        return getEntryCountFor(.eighth)
-    }
-
-    private func getNinthEntryCount() -> Int {
-        return getEntryCountFor(.ninth)
-    }
-
-    private func setTime() {
-        time = itemFormatter.string(from: items[items.endIndex - 1].timestamp ?? Date())
-    }
-
-    func timeDiff(colour: Colours) -> Int {
-        let firstIndex = items.firstIndex(where: { $0.colour == colour.label }) ?? 0
-        let lastIndex = items.lastIndex(where: { $0.colour == colour.label }) ?? 0
-        if firstIndex != lastIndex {
-            let diffComponents = Calendar.current.dateComponents([.hour], from: items[lastIndex].timestamp!, to: items[firstIndex].timestamp!)
-            let days = diffComponents.hour! / 24
-            return days
-        }
-        return 0
-    }
-
-    func getItemsArray() -> [String] {
-        let arrayColours = items.map { item in
-            item.colour!
-        }
-        return arrayColours
-    }
-
-    private func getEntryCountFor(_ colour: Colours) -> Int {
-        let array = getItemsArray()
-        let dictionary = array.reduce(into: [:]) { counts, colour in
-            counts[colour, default: 0] += 1
-        }
-        if let val = dictionary[colour.label] {
-            return val
-        }
-        return 0
     }
 
     var headerList: some View {
@@ -260,7 +55,6 @@ struct ButtonView: View {
                     Button(action: setTime, label: {
                         Text("\(item.colour!)").font(.headline)
                     }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: item.colour!))
-//                    Spacer()
                     Button(action: setTime, label: {
                         Text("\(item.timestamp!, formatter: itemFormatter)").font(.footnote)
                     }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: item.colour!))
@@ -418,6 +212,204 @@ struct ButtonView: View {
             }
 //            TextEditor(text: $itemslist)
         }
+    }
+    func addFirstItem() {
+        addItem(colour: .first)
+        firstIncrement()
+    }
+
+    func addSecondItem() {
+        addItem(colour: .second)
+        secondIncrement()
+    }
+
+    func addThirdItem() {
+        addItem(colour: .third)
+        thirdIncrement()
+    }
+
+    func addFourthItem() {
+        addItem(colour: .fourth)
+        fourthIncrement()
+    }
+
+    func addFifthItem() {
+        addItem(colour: .fifth)
+        fifthIncrement()
+    }
+
+    func addSixthItem() {
+        addItem(colour: .sixth)
+        sixthIncrement()
+    }
+
+    func addSeventhItem() {
+        addItem(colour: .seventh)
+        seventhIncrement()
+    }
+
+    func addEigthItem() {
+        addItem(colour: .eighth)
+        eigthIncrement()
+    }
+
+    func addNinthItem() {
+        addItem(colour: .ninth)
+        ninthIncrement()
+    }
+    
+    func getDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E MMM d h:mm a"
+        return
+            dateFormatter.string(from: Date())
+    }
+
+    func addItem(colour: Colours) {
+        withAnimation {
+            let newItem = Item(context: viewContext)
+            newItem.timestamp = birthDate
+            newItem.colour = colour.label
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+
+    func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { items[$0] }.forEach(viewContext.delete)
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+
+    private let itemFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        return formatter
+    }()
+
+    private func getFirstEntryCount() -> Int {
+        return getEntryCountFor(.first)
+    }
+
+    private func getSecondEntryCount() -> Int {
+        return getEntryCountFor(.second)
+    }
+
+    private func getThirdEntryCount() -> Int {
+        return getEntryCountFor(.third)
+    }
+
+    private func getFourthEntryCount() -> Int {
+        return getEntryCountFor(.fourth)
+    }
+
+    private func getFifthEntryCount() -> Int {
+        return getEntryCountFor(.fifth)
+    }
+
+    private func getSixthEntryCount() -> Int {
+        return getEntryCountFor(.sixth)
+    }
+
+    private func getSeventhEntryCount() -> Int {
+        return getEntryCountFor(.seventh)
+    }
+
+    private func getEighthEntryCount() -> Int {
+        return getEntryCountFor(.eighth)
+    }
+
+    private func getNinthEntryCount() -> Int {
+        return getEntryCountFor(.ninth)
+    }
+    
+    func firstIncrement() {
+        firstCount += 1
+        time = getDate()
+    }
+
+    func secondIncrement() {
+        secondCount += 1
+        time = getDate()
+    }
+
+    func thirdIncrement() {
+        thirdCount += 1
+        time = getDate()
+    }
+
+    func fourthIncrement() {
+        fourthCount += 1
+        time = getDate()
+    }
+
+    func fifthIncrement() {
+        fifthCount += 1
+        time = getDate()
+    }
+
+    func sixthIncrement() {
+        sixthCount += 1
+        time = getDate()
+    }
+
+    func seventhIncrement() {
+        seventhCount += 1
+        time = getDate()
+    }
+
+    func eigthIncrement() {
+        eighthCount += 1
+        time = getDate()
+    }
+
+    func ninthIncrement() {
+        ninthCount += 1
+        time = getDate()
+    }
+
+    private func setTime() {
+        time = itemFormatter.string(from: items[items.endIndex - 1].timestamp ?? Date())
+    }
+
+    func timeDiff(colour: Colours) -> Int {
+        let firstIndex = items.firstIndex(where: { $0.colour == colour.label }) ?? 0
+        let lastIndex = items.lastIndex(where: { $0.colour == colour.label }) ?? 0
+        if firstIndex != lastIndex {
+            let diffComponents = Calendar.current.dateComponents([.hour], from: items[lastIndex].timestamp!, to: items[firstIndex].timestamp!)
+            let days = diffComponents.hour! / 24
+            return days
+        }
+        return 0
+    }
+
+    func getItemsArray() -> [String] {
+        let arrayColours = items.map { item in
+            item.colour!
+        }
+        return arrayColours
+    }
+
+    private func getEntryCountFor(_ colour: Colours) -> Int {
+        let array = getItemsArray()
+        let dictionary = array.reduce(into: [:]) { counts, colour in
+            counts[colour, default: 0] += 1
+        }
+        if let val = dictionary[colour.label] {
+            return val
+        }
+        return 0
     }
 }
 
