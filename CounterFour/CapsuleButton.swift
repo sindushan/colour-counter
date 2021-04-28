@@ -7,6 +7,26 @@
 
 import Foundation
 import SwiftUI
+extension Color {
+    static let lightShadow = Color(red: 255 / 255, green: 255 / 255, blue: 255 / 255)
+    static let darkShadow = Color(red: 163 / 255, green: 177 / 255, blue: 198 / 255)
+    static let background = Color(red: 224 / 255, green: 229 / 255, blue: 236 / 255)
+}
+
+struct neumorphic: ButtonStyle {
+    var color: Color
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, 20)
+            .padding(10)
+            .background(color)
+            .cornerRadius(5)
+            .shadow(color: Color.darkShadow, radius: 3, x: 2, y: 2)
+            .shadow(color: Color.lightShadow, radius: 3, x: -2, y: -2)
+            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
+    }
+}
 
 struct RoundedRectangleButton: ButtonStyle {
     var bgColor: Color
@@ -55,8 +75,33 @@ struct CapsuleButton: ButtonStyle {
     }
 }
 
+func getColourFor(_ c: String) -> Color{
+    switch c {
+    case Colours.first.label:
+        return Color.SecondTheme.firstColor
+    case Colours.second.label:
+        return Color.SecondTheme.secondColor
+    case Colours.third.label:
+        return Color.SecondTheme.thirdColor
+    case Colours.fourth.label:
+        return Color.SecondTheme.fourthColor
+    case Colours.fifth.label:
+        return Color.SecondTheme.fifthColor
+    case Colours.sixth.label:
+        return Color.SecondTheme.sixthColor
+    case Colours.seventh.label:
+        return Color.SecondTheme.seventhColor
+    case Colours.eighth.label:
+        return Color.SecondTheme.eighthColor
+    case Colours.ninth.label:
+        return Color.SecondTheme.ninthColor
+    default:
+        return Color.SecondTheme.listTimeColor
+    }
+}
+
 struct BlackCapsuleButton: ButtonStyle {
-    var bgColor: Color
+    var bgColor: String
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -64,7 +109,7 @@ struct BlackCapsuleButton: ButtonStyle {
             .background(
                 ZStack {
                     Capsule()
-                        .fill(bgColor)
+                        .fill(getColourFor(bgColor))
                 }
             )
             .scaleEffect(configuration.isPressed ? 0.85 : 1)

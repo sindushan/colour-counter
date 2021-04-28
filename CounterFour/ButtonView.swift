@@ -18,55 +18,87 @@ struct ButtonView: View {
     @State var sixthCount = 0
     @State var seventhCount = 0
     @State var eighthCount = 0
+    @State var ninthCount = 0
+    @State var time = "--:--"
+    @State var itemslist = ""
     var items: FetchedResults<Item>
     @State var isItEmpty = true
     @Environment(\.managedObjectContext) private var viewContext
     @State private var birthDate = Date()
-    
-    
     var body: some View {
-        headerList
-        dateSelector
-        VStack(alignment: .trailing, spacing: 15, content: {
+        VStack(alignment: .trailing, spacing: 5, content: {
+            headerList
+            dateSelector
             firstRow
             secondRow
             thirdRow
-            fourthRow
         })
     }
 
     func firstIncrement() {
         firstCount += 1
+        time = getDate()
     }
 
     func secondIncrement() {
         secondCount += 1
+        time = getDate()
     }
 
     func thirdIncrement() {
         thirdCount += 1
+        time = getDate()
     }
 
     func fourthIncrement() {
         fourthCount += 1
+        time = getDate()
     }
 
     func fifthIncrement() {
         fifthCount += 1
+        time = getDate()
     }
 
     func sixthIncrement() {
         sixthCount += 1
+        time = getDate()
     }
 
     func seventhIncrement() {
         seventhCount += 1
+        time = getDate()
     }
 
     func eigthIncrement() {
         eighthCount += 1
+        time = getDate()
     }
 
+    func ninthIncrement() {
+        ninthCount += 1
+        time = getDate()
+    }
+    
+    func getItems() {
+//        itemslist = String(items)
+        let times = items.map { item in
+            item.timestamp
+        }
+        var stringDate = ""
+        let formatter4 = DateFormatter()
+        formatter4.dateFormat = "HH:mm E, d MMM y"
+        times.forEach { (time) in
+            stringDate = stringDate + formatter4.string(from: time!)
+        }
+//        let timeandDate = [String:String].self
+//        var counter = 0
+//        times.forEach { item in
+//            timeandDate[item] = items
+//            counter = counter + 1
+//        }
+        itemslist = stringDate
+    }
     func getDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E MMM d h:mm a"
@@ -128,6 +160,11 @@ struct ButtonView: View {
         eigthIncrement()
     }
 
+    func addNinthItem() {
+        addItem(colour: .ninth)
+        ninthIncrement()
+    }
+
     func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
@@ -142,8 +179,8 @@ struct ButtonView: View {
 
     private let itemFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .medium
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
         return formatter
     }()
 
@@ -179,6 +216,10 @@ struct ButtonView: View {
         return getEntryCountFor(.eighth)
     }
 
+    private func getNinthEntryCount() -> Int {
+        return getEntryCountFor(.ninth)
+    }
+
     private func setTime() {
         time = itemFormatter.string(from: items[items.endIndex - 1].timestamp ?? Date())
     }
@@ -211,25 +252,25 @@ struct ButtonView: View {
         }
         return 0
     }
-    
+
     var headerList: some View {
         List {
             if isItEmpty { ForEach(items) { item in
                 HStack {
                     Button(action: setTime, label: {
                         Text("\(item.colour!)").font(.headline)
-                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: Color.SecondTheme.listNameColour))
-                    Spacer()
+                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: item.colour!))
+//                    Spacer()
                     Button(action: setTime, label: {
-                        Text("\(item.timestamp!, formatter: itemFormatter)").font(.headline)
-                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: Color.SecondTheme.listTimeColor))
+                        Text("\(item.timestamp!, formatter: itemFormatter)").font(.footnote)
+                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: item.colour!))
                 }
             }
             .onDelete(perform: deleteItems)
             }
         }
     }
-    
+
     var dateSelector: some View {
         HStack {
             Spacer()
@@ -239,128 +280,143 @@ struct ButtonView: View {
             }
         }
     }
-    
-    var firstRow: some View {
+    var firstColour: some View {
         HStack {
-            Spacer()
             Button(action: addFirstItem, label: {
-                Text("\(getFirstEntryCount())").font(.headline)
+            Text("\(getFirstEntryCount())").font(.headline)
             }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.firstColor))
 
-            HStack {
-                Spacer()
-                Button(action: addFirstItem, label: {
-                    Text("\(Colours.first.label)").font(.headline)
-                }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.firstColor))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Button(action: addSecondItem, label: {
-                    Text("\(getSecondEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.secondColor))
-
-                HStack {
-                    Spacer()
-                    Button(action: addSecondItem, label: {
-                        Text("\(Colours.second.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.secondColor))
-//                        Spacer()
-                }
-            }
+            Button(action: addFirstItem, label: {
+            Text("\(Colours.first.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.firstColor))
         }
     }
-    
-    var secondRow: some View {
+    var secondColour: some View {
         HStack {
-            Spacer()
+            Button(action: addSecondItem, label: {
+            Text("\(getSecondEntryCount())").font(.headline)
+            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.secondColor))
+
+            Button(action: addSecondItem, label: {
+            Text("\(Colours.second.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.secondColor))
+        }
+    }
+    var thirdColour: some View {
+        HStack {
             Button(action: addThirdItem, label: {
-                Text("\(getThirdEntryCount())").font(.headline)
+            Text("\(getThirdEntryCount())").font(.headline)
             }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.thirdColor))
 
-            HStack {
-                Spacer()
-                Button(action: addThirdItem, label: {
-                    Text("\(Colours.third.label)").font(.headline)
-                }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.thirdColor))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Button(action: addFourthItem, label: {
-                    Text("\(getFourthEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fourthColor))
+            Button(action: addThirdItem, label: {
+            Text("\(Colours.third.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.thirdColor))
+        }
+    }
+    var fourthColour: some View {
+        HStack {
+            Button(action: addFourthItem, label: {
+            Text("\(getFourthEntryCount())").font(.headline)
+            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fourthColor))
 
-                HStack {
-                    Spacer()
-                    Button(action: addFourthItem, label: {
-                        Text("\(Colours.fourth.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fourthColor))
-//                        Spacer()
-                }
-            }
+            Button(action: addFourthItem, label: {
+            Text("\(Colours.fourth.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fourthColor))
         }
     }
     
-    var thirdRow: some View {
+    var fifthColour: some View {
         HStack {
-            Spacer()
             Button(action: addFifthItem, label: {
-                Text("\(getFifthEntryCount())").font(.headline)
+            Text("\(getFifthEntryCount())").font(.headline)
             }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fifthColor))
 
-            HStack {
-                Spacer()
-                Button(action: addFifthItem, label: {
-                    Text("\(Colours.fifth.label)").font(.headline)
-                }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fifthColor))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Button(action: addSixthItem, label: {
-                    Text("\(getSixthEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.sixthColor))
-
-                HStack {
-                    Spacer()
-                    Button(action: addSixthItem, label: {
-                        Text("\(Colours.sixth.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.sixthColor))
-//                        Spacer()
-                }
-            }
+            Button(action: addFifthItem, label: {
+            Text("\(Colours.fifth.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fifthColor))
         }
     }
     
-    var fourthRow: some View {
+    var sixthColour: some View {
         HStack {
-            Spacer()
+            Button(action: addSixthItem, label: {
+            Text("\(getSixthEntryCount())").font(.headline)
+            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.sixthColor))
+
+            Button(action: addSixthItem, label: {
+            Text("\(Colours.sixth.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.sixthColor))
+        }
+    }
+    
+    var seventhColour: some View {
+        HStack {
             Button(action: addSeventhItem, label: {
-                Text("\(getSeventhEntryCount())").font(.headline)
+            Text("\(getSeventhEntryCount())").font(.headline)
             }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.seventhColor))
 
-            HStack {
-                Spacer()
-                Button(action: addSeventhItem, label: {
-                    Text("\(Colours.seventh.label)").font(.headline)
-                }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.seventhColor))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Button(action: addEigthItem, label: {
-                    Text("\(getEighthEntryCount())").font(.headline)
-                }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.eighthColor))
+            Button(action: addSeventhItem, label: {
+            Text("\(Colours.seventh.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.seventhColor))
+        }
+    }
+    
+    var eighthColour: some View {
+        HStack {
+            Button(action: addEigthItem, label: {
+            Text("\(getEighthEntryCount())").font(.headline)
+            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.eighthColor))
 
-                HStack {
-                    Spacer()
-                    Button(action: addEigthItem, label: {
-                        Text("\(Colours.eighth.label)").font(.headline)
-                    }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.eighthColor))
-//                        Spacer()
-                }
+            Button(action: addEigthItem, label: {
+            Text("\(Colours.eighth.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.eighthColor))
+        }
+    }
+    
+    var ninthColour: some View {
+        HStack {
+            Button(action: addNinthItem, label: {
+            Text("\(getNinthEntryCount())").font(.headline)
+            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.ninthColor))
+
+            Button(action: addNinthItem, label: {
+            Text("\(Colours.ninth.label)").font(.headline)
+            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.ninthColor))
+        }
+    }
+    var firstRow: some View {
+        HStack {
+            firstColour
+            secondColour
+            thirdColour
+        }
+    }
+    var secondRow: some View {
+        HStack {
+            fourthColour
+            fifthColour
+            sixthColour
+        }
+    }
+
+    var thirdRow: some View {
+        HStack {
+            seventhColour
+            eighthColour
+            ninthColour
+        }
+    }
+
+    var fourthRow: some View {
+        HStack {
+        }
+    }
+
+    var fifthRow: some View {
+        VStack{
+            HStack {
             }
+//            TextEditor(text: $itemslist)
         }
     }
 }
