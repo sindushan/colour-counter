@@ -21,6 +21,10 @@ struct ButtonView: View {
     @State var ninthCount = 0
     @State var time = "--:--"
     @State var itemslist = ""
+    let zStackWidth: CGFloat = 130.0
+    let zStackHeight: CGFloat = 90.0
+    let zStackFontSize: CGFloat = 20
+    let zStackCornerRadius: CGFloat = 50
     var items: FetchedResults<Item>
     @State var isItEmpty = true
     @Environment(\.managedObjectContext) private var viewContext
@@ -53,14 +57,28 @@ struct ButtonView: View {
     var headerList: some View {
         List {
             if isItEmpty { ForEach(items) { item in
+//                ZStack(alignment: .center) {
+//                    Capsule().foregroundColor(Color.SecondTheme.firstColor)
+//                    HStack() {
+//                        Button(action: { setTime() }) {
+//                        Text("\(item.colour!)").foregroundColor(.white).font(.system(size: 12))
+//                        }.frame(width: 90, height: 20)
+//                        .background(Color.SecondTheme.firstColor).cornerRadius(zStackCornerRadius)
+//                        Divider()
+//                        Button(action: { setTime() }) {
+//                        Text("\(item.timestamp!, formatter: itemFormatter)").foregroundColor(.white).font(.system(size: 12))
+//                        }.frame(width: 240, height: 20)
+//                        .background(Color.SecondTheme.firstColor).cornerRadius(zStackCornerRadius)
+//                    }
+//                }.padding().frame(width: 350, height: 20)
                 HStack {
                     Button(action: setTime, label: {
-                        Text("\(item.colour!)").font(.headline)
-                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: item.colour!))
+                        Text("\(item.colour!)").font(.footnote)
+                    }).padding(0.5).buttonStyle(BlackCircleButton(bgColor: item.colour!)).frame(width: 90, height: 20)
                     Button(action: setTime, label: {
                         Text("\(item.timestamp!, formatter: itemFormatter)").font(.footnote)
-                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: item.colour!))
-                }
+                    }).padding(0.5).buttonStyle(BlackCapsuleButton(bgColor: item.colour!)).frame(width: UIScreen.main.bounds.width - 90, height: 20)
+                }.padding().frame(width: 350, height: 20)
             }
             .onDelete(perform: deleteItems)
             }
@@ -82,16 +100,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.firstColor)
             HStack() {
                 Button(action: { addFirstItem() }) {
-                Text("\(Colours.first.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.first.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.firstColor).cornerRadius(50)
+                .background(Color.SecondTheme.firstColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addFirstItem() }) {
-                Text("\(getFirstEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getFirstEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.firstColor).cornerRadius(50)
+                .background(Color.SecondTheme.firstColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
 //        HStack {
 //            Button(action: addFirstItem, label: {
 //                Text("\(Colours.first.label)").font(.headline)
@@ -108,16 +126,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.secondColor)
             HStack() {
                 Button(action: { addSecondItem() }) {
-                Text("\(Colours.second.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.second.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.secondColor).cornerRadius(50)
+                .background(Color.SecondTheme.secondColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addSecondItem() }) {
-                Text("\(getSecondEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getSecondEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.secondColor).cornerRadius(50)
+                .background(Color.SecondTheme.secondColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
 //        HStack {
 //            Button(action: addSecondItem, label: {
 //                Text("\(Colours.second.label)").font(.headline)
@@ -134,16 +152,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.thirdColor)
             HStack() {
                 Button(action: { addThirdItem() }) {
-                Text("\(Colours.third.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.third.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.thirdColor).cornerRadius(50)
+                .background(Color.SecondTheme.thirdColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addThirdItem() }) {
-                Text("\(getThirdEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getThirdEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.thirdColor).cornerRadius(50)
+                .background(Color.SecondTheme.thirdColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
 //        HStack {
 //            Button(action: addThirdItem, label: {
 //                Text("\(Colours.third.label)").font(.headline)
@@ -160,16 +178,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.fourthColor)
             HStack() {
                 Button(action: { addFourthItem() }) {
-                Text("\(Colours.fourth.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.fourth.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.fourthColor).cornerRadius(50)
+                .background(Color.SecondTheme.fourthColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addEigthItem() }) {
-                Text("\(getFourthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getFourthEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.fourthColor).cornerRadius(50)
+                .background(Color.SecondTheme.fourthColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
 //        HStack {
 //            Button(action: addFourthItem, label: {
 //                Text("\(Colours.fourth.label)").font(.headline)
@@ -186,16 +204,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.fifthColor)
             HStack() {
                 Button(action: { addFifthItem() }) {
-                Text("\(Colours.fifth.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.fifth.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.fifthColor).cornerRadius(50)
+                .background(Color.SecondTheme.fifthColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addFifthItem() }) {
-                Text("\(getFifthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getFifthEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.fifthColor).cornerRadius(50)
+                .background(Color.SecondTheme.fifthColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
 //        HStack {
 //            Button(action: addFifthItem, label: {
 //                Text("\(Colours.fifth.label)").font(.headline)
@@ -212,16 +230,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.sixthColor)
             HStack() {
                 Button(action: { addSixthItem() }) {
-                Text("\(Colours.sixth.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.sixth.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.sixthColor).cornerRadius(50)
+                .background(Color.SecondTheme.sixthColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addSixthItem() }) {
-                Text("\(getSixthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getSixthEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.sixthColor).cornerRadius(50)
+                .background(Color.SecondTheme.sixthColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
 //        HStack {
 //            Button(action: addSixthItem, label: {
 //                Text("\(Colours.sixth.label)").font(.headline)
@@ -238,16 +256,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.seventhColor)
             HStack() {
                 Button(action: { addSeventhItem() }) {
-                Text("\(Colours.seventh.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.seventh.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.seventhColor).cornerRadius(50)
+                .background(Color.SecondTheme.seventhColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addSeventhItem() }) {
-                Text("\(getSeventhEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getSeventhEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.seventhColor).cornerRadius(50)
+                .background(Color.SecondTheme.seventhColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
 //        HStack {
 //            Button(action: addSeventhItem, label: {
 //                Text("\(Colours.seventh.label)").font(.headline)
@@ -264,16 +282,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.eighthColor)
             HStack() {
                 Button(action: { addEigthItem() }) {
-                Text("\(Colours.ninth.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.eighth.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.eighthColor).cornerRadius(50)
+                .background(Color.SecondTheme.eighthColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addEigthItem() }) {
-                Text("\(getNinthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getEighthEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.eighthColor).cornerRadius(50)
+                .background(Color.SecondTheme.eighthColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
         
 //        HStack {
 //            Button(action: addEigthItem, label: {
@@ -292,16 +310,16 @@ struct ButtonView: View {
             Capsule().foregroundColor(Color.SecondTheme.ninthColor)
             HStack() {
                 Button(action: { addNinthItem() }) {
-                Text("\(Colours.ninth.label)").foregroundColor(.white).font(.system(size: 18))
+                Text("\(Colours.ninth.label)").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.ninthColor).cornerRadius(50)
+                .background(Color.SecondTheme.ninthColor).cornerRadius(zStackCornerRadius)
                 Divider()
                 Button(action: { addNinthItem() }) {
-                Text("\(getNinthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                Text("\(getNinthEntryCount())").foregroundColor(.white).font(.system(size: zStackFontSize))
                 }.frame(width: 40, height: 40)
-                .background(Color.SecondTheme.ninthColor).cornerRadius(50)
+                .background(Color.SecondTheme.ninthColor).cornerRadius(zStackCornerRadius)
             }
-        }.padding().frame(width: 120, height: 90)
+        }.padding().frame(width: zStackWidth, height: zStackHeight)
         
 //        HStack {
 //            Button(action: addNinthItem, label: {

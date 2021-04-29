@@ -105,7 +105,7 @@ struct BlackCapsuleButton: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding(20)
+            .padding(10)
             .background(
                 ZStack {
                     Capsule()
@@ -117,7 +117,23 @@ struct BlackCapsuleButton: ButtonStyle {
             .animation(.spring())
     }
 }
+struct BlackCircleButton: ButtonStyle {
+    var bgColor: String
 
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .background(
+                ZStack {
+                    Circle()
+                        .fill(getColourFor(bgColor))
+                }
+            )
+            .scaleEffect(configuration.isPressed ? 0.85 : 1)
+            .foregroundColor(.white)
+            .animation(.spring())
+    }
+}
 struct EllipseButton: ButtonStyle {
     var bgColor: Color
 
