@@ -32,9 +32,10 @@ struct ButtonView: View {
             firstRow
             secondRow
             thirdRow
+//            fifthRow
         })
     }
-    
+
     func getItems() {
         let times = items.map { item in
             item.timestamp
@@ -42,8 +43,9 @@ struct ButtonView: View {
         var stringDate = ""
         let formatter4 = DateFormatter()
         formatter4.dateFormat = "HH:mm E, d MMM y"
-        times.forEach { (time) in
-            stringDate = stringDate + formatter4.string(from: time!)
+
+        times.forEach { time in
+            stringDate = stringDate + " " + formatter4.string(from: time!)
         }
         itemslist = stringDate
     }
@@ -74,119 +76,255 @@ struct ButtonView: View {
             }
         }
     }
+
     var firstColour: some View {
-        HStack {
-            Button(action: addFirstItem, label: {
-            Text("\(getFirstEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.firstColor))
-
-            Button(action: addFirstItem, label: {
-            Text("\(Colours.first.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.firstColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.firstColor)
+            HStack() {
+                Button(action: { addFirstItem() }) {
+                Text("\(Colours.first.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.firstColor).cornerRadius(50)
+                Divider()
+                Button(action: { addFirstItem() }) {
+                Text("\(getFirstEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.firstColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+//        HStack {
+//            Button(action: addFirstItem, label: {
+//                Text("\(Colours.first.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.firstColor))
+//
+//            Button(action: addFirstItem, label: {
+//                Text("\(getFirstEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.firstColor))
+//        }
     }
+
     var secondColour: some View {
-        HStack {
-            Button(action: addSecondItem, label: {
-            Text("\(getSecondEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.secondColor))
-
-            Button(action: addSecondItem, label: {
-            Text("\(Colours.second.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.secondColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.secondColor)
+            HStack() {
+                Button(action: { addSecondItem() }) {
+                Text("\(Colours.second.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.secondColor).cornerRadius(50)
+                Divider()
+                Button(action: { addSecondItem() }) {
+                Text("\(getSecondEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.secondColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+//        HStack {
+//            Button(action: addSecondItem, label: {
+//                Text("\(Colours.second.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.secondColor))
+//
+//            Button(action: addSecondItem, label: {
+//                Text("\(getSecondEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.secondColor))
+//        }
     }
+
     var thirdColour: some View {
-        HStack {
-            Button(action: addThirdItem, label: {
-            Text("\(getThirdEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.thirdColor))
-
-            Button(action: addThirdItem, label: {
-            Text("\(Colours.third.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.thirdColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.thirdColor)
+            HStack() {
+                Button(action: { addThirdItem() }) {
+                Text("\(Colours.third.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.thirdColor).cornerRadius(50)
+                Divider()
+                Button(action: { addThirdItem() }) {
+                Text("\(getThirdEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.thirdColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+//        HStack {
+//            Button(action: addThirdItem, label: {
+//                Text("\(Colours.third.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.thirdColor))
+//
+//            Button(action: addThirdItem, label: {
+//                Text("\(getThirdEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.thirdColor))
+//        }
     }
+
     var fourthColour: some View {
-        HStack {
-            Button(action: addFourthItem, label: {
-            Text("\(getFourthEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fourthColor))
-
-            Button(action: addFourthItem, label: {
-            Text("\(Colours.fourth.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fourthColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.fourthColor)
+            HStack() {
+                Button(action: { addFourthItem() }) {
+                Text("\(Colours.fourth.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.fourthColor).cornerRadius(50)
+                Divider()
+                Button(action: { addEigthItem() }) {
+                Text("\(getFourthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.fourthColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+//        HStack {
+//            Button(action: addFourthItem, label: {
+//                Text("\(Colours.fourth.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fourthColor))
+//
+//            Button(action: addFourthItem, label: {
+//                Text("\(getFourthEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fourthColor))
+//        }
     }
-    
+
     var fifthColour: some View {
-        HStack {
-            Button(action: addFifthItem, label: {
-            Text("\(getFifthEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fifthColor))
-
-            Button(action: addFifthItem, label: {
-            Text("\(Colours.fifth.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fifthColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.fifthColor)
+            HStack() {
+                Button(action: { addFifthItem() }) {
+                Text("\(Colours.fifth.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.fifthColor).cornerRadius(50)
+                Divider()
+                Button(action: { addFifthItem() }) {
+                Text("\(getFifthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.fifthColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+//        HStack {
+//            Button(action: addFifthItem, label: {
+//                Text("\(Colours.fifth.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.fifthColor))
+//
+//            Button(action: addFifthItem, label: {
+//                Text("\(getFifthEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.fifthColor))
+//        }
     }
-    
+
     var sixthColour: some View {
-        HStack {
-            Button(action: addSixthItem, label: {
-            Text("\(getSixthEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.sixthColor))
-
-            Button(action: addSixthItem, label: {
-            Text("\(Colours.sixth.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.sixthColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.sixthColor)
+            HStack() {
+                Button(action: { addSixthItem() }) {
+                Text("\(Colours.sixth.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.sixthColor).cornerRadius(50)
+                Divider()
+                Button(action: { addSixthItem() }) {
+                Text("\(getSixthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.sixthColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+//        HStack {
+//            Button(action: addSixthItem, label: {
+//                Text("\(Colours.sixth.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.sixthColor))
+//
+//            Button(action: addSixthItem, label: {
+//                Text("\(getSixthEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.sixthColor))
+//        }
     }
-    
+
     var seventhColour: some View {
-        HStack {
-            Button(action: addSeventhItem, label: {
-            Text("\(getSeventhEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.seventhColor))
-
-            Button(action: addSeventhItem, label: {
-            Text("\(Colours.seventh.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.seventhColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.seventhColor)
+            HStack() {
+                Button(action: { addSeventhItem() }) {
+                Text("\(Colours.seventh.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.seventhColor).cornerRadius(50)
+                Divider()
+                Button(action: { addSeventhItem() }) {
+                Text("\(getSeventhEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.seventhColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+//        HStack {
+//            Button(action: addSeventhItem, label: {
+//                Text("\(Colours.seventh.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.seventhColor))
+//
+//            Button(action: addSeventhItem, label: {
+//                Text("\(getSeventhEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.seventhColor))
+//        }
     }
-    
+
     var eighthColour: some View {
-        HStack {
-            Button(action: addEigthItem, label: {
-            Text("\(getEighthEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.eighthColor))
-
-            Button(action: addEigthItem, label: {
-            Text("\(Colours.eighth.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.eighthColor))
-        }
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.eighthColor)
+            HStack() {
+                Button(action: { addEigthItem() }) {
+                Text("\(Colours.ninth.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.eighthColor).cornerRadius(50)
+                Divider()
+                Button(action: { addEigthItem() }) {
+                Text("\(getNinthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.eighthColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+        
+//        HStack {
+//            Button(action: addEigthItem, label: {
+//                Text("\(Colours.eighth.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.eighthColor))
+//
+//            Button(action: addEigthItem, label: {
+//                Text("\(getEighthEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.eighthColor))
+//        }
     }
-    
+
     var ninthColour: some View {
-        HStack {
-            Button(action: addNinthItem, label: {
-            Text("\(getNinthEntryCount())").font(.headline)
-            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.ninthColor))
-
-            Button(action: addNinthItem, label: {
-            Text("\(Colours.ninth.label)").font(.headline)
-            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.ninthColor))
-        }
+        
+        ZStack(alignment: .center) {
+            Capsule().foregroundColor(Color.SecondTheme.ninthColor)
+            HStack() {
+                Button(action: { addNinthItem() }) {
+                Text("\(Colours.ninth.label)").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.ninthColor).cornerRadius(50)
+                Divider()
+                Button(action: { addNinthItem() }) {
+                Text("\(getNinthEntryCount())").foregroundColor(.white).font(.system(size: 18))
+                }.frame(width: 40, height: 40)
+                .background(Color.SecondTheme.ninthColor).cornerRadius(50)
+            }
+        }.padding().frame(width: 120, height: 90)
+        
+//        HStack {
+//            Button(action: addNinthItem, label: {
+//                Text("\(Colours.ninth.label)").font(.headline)
+//            }).padding(0.5).buttonStyle(CapsuleButton(bgColor: Color.SecondTheme.ninthColor))
+//
+//            Button(action: addNinthItem, label: {
+//                Text("\(getNinthEntryCount())").font(.headline)
+//            }).padding(0.5).buttonStyle(EllipseButton(bgColor: Color.SecondTheme.ninthColor))
+//        }
     }
+
     var firstRow: some View {
-        HStack {
+        
+        HStack(alignment: .center, spacing: 15) {
             firstColour
             secondColour
             thirdColour
         }
     }
+
     var secondRow: some View {
-        HStack {
+        HStack(alignment: .center, spacing: 15) {
             fourthColour
             fifthColour
             sixthColour
@@ -194,7 +332,7 @@ struct ButtonView: View {
     }
 
     var thirdRow: some View {
-        HStack {
+        HStack(alignment: .center, spacing: 12) {
             seventhColour
             eighthColour
             ninthColour
@@ -202,17 +340,20 @@ struct ButtonView: View {
     }
 
     var fourthRow: some View {
-        HStack {
+        VStack {
+            HStack {
+                Button(action: getItems, label: {
+                    Text("GENERATE").font(.headline)
+                }).padding(0.5)
+                TextEditor(text: $itemslist)
+            }
         }
     }
 
     var fifthRow: some View {
-        VStack{
-            HStack {
-            }
-//            TextEditor(text: $itemslist)
-        }
+        HStack {}
     }
+
     func addFirstItem() {
         addItem(colour: .first)
         firstIncrement()
@@ -257,7 +398,7 @@ struct ButtonView: View {
         addItem(colour: .ninth)
         ninthIncrement()
     }
-    
+
     func getDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E MMM d h:mm a"
@@ -333,7 +474,7 @@ struct ButtonView: View {
     private func getNinthEntryCount() -> Int {
         return getEntryCountFor(.ninth)
     }
-    
+
     func firstIncrement() {
         firstCount += 1
         time = getDate()

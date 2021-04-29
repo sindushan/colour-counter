@@ -75,7 +75,7 @@ struct CapsuleButton: ButtonStyle {
     }
 }
 
-func getColourFor(_ c: String) -> Color{
+func getColourFor(_ c: String) -> Color {
     switch c {
     case Colours.first.label:
         return Color.SecondTheme.firstColor
